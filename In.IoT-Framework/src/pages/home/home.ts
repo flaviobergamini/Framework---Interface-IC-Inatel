@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AlertController } from 'ionic-angular';
+
+export class Users{
+	email: string;
+	senha: string;
+}
 
 @Component({
   selector: 'page-home',
@@ -7,8 +16,100 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  users: Users = new Users();
 
+	@ViewChild('usuario') email;
+	@ViewChild('senha') password;
+
+loginForm: FormGroup;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public formbuilder: FormBuilder,
+    public afAuth: AngularFireAuth, 
+    public Alertctrl: AlertController
+    ) {
+    this.loginForm = this.formbuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6)]]
+    })
   }
 
+  entrar(){
+
+  	//let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+
+    this.afAuth.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
+
+    .then(data => {
+
+      console.log('Data do login: ', data);
+      this.users.email = this.email.value
+      this.users.senha = this.password.value
+
+      this.navCtrl.setRoot('start-page');
+
+    })
+
+    .catch((error: any) => {
+      
+      if(error.code == 'auth/wrong-password'){
+        this.presentAlert('Erro', 'Senha incorreta, digite novamente.')
+        this.loginForm.controls['password'].setValue(null);
+      }
+      /*
+       if(error.code == 'auth/invalid-email')
+      {
+        toast.setMessage('Email inválido!');
+      }
+
+       else if(error.code == 'auth/user-disabled')
+      {
+        toast.setMessage('Usuário desabilitado');
+      }
+
+      else if(error.code == 'auth/user-not-found')
+      {
+        toast.setMessage('Usuário não encontrado');
+      }
+
+      else if(error.code == 'auth/wrong-password')
+      {
+        toast.setMessage('Senha incorreta');
+      }
+
+      
+      toast.present(); */
+
+    });
+  }
+
+/*
+  submitLogin(){
+    this.afAuth.auth.signInWithEmailAndPassword(
+      this.loginForm.value.email, this.loginForm.value.password)
+    .then(() => {
+      //console.log('Data do login: ');
+      this.users.email = this.email.value
+      this.users.senha = this.password.value
+      this.presentAlert('Usuário autenticado','');
+      this.navCtrl.setRoot('start-page');
+    })
+    .catch((error) => {
+      if(error.code == 'auth/wrong-password'){
+        this.presentAlert('Erro', 'Senha incorreta, digite novamente.')
+        this.loginForm.controls['password'].setValue(null);
+      }
+    })
+  }
+*/
+  presentAlert(title: string, subtitle:string) {
+    let alert = this.Alertctrl.create({
+      title: title,
+      subTitle: subtitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }

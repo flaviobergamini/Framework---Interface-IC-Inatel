@@ -25678,18 +25678,60 @@ page-create-user {
   padding-bottom: 2.5em;
 }
 
-page-home .insere-image {
-  background-image: url(../assets/images/logo-in-iot.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+ion-content {
+  background: #e8e8e8 !important;
 }
 
-page-home .custom-title {
-  padding-top: 5em;
-  padding-bottom: 10em;
+page-home ion-content {
+  background: #e8e8e8 !important;
 }
 
+page-home .logo {
+  widht: auto;
+  margin: auto;
+  display: block;
+  max-width: 75%;
+  padding-top: 20px;
+}
+
+page-home .textos {
+  color: #000;
+  background: none;
+  text-align: ceter;
+}
+
+page-home .textos a {
+  color: #000;
+}
+
+page-home .botao {
+  border-radius: 30px !important;
+}
+
+page-home .ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px;
+  color: #488aff;
+  background-color: #488aff;
+  opacity: 1;
+  font-size: 0.9em;
+}
+
+/*
+page-home {
+    .insere-image{
+        background-image: url(../assets/images/logo-in-iot.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    
+    .custom-title {
+        padding-top: 5em;
+        padding-bottom: 10em
+    }
+}*/
 page-login .custom-title {
   padding-top: 5em;
 }
