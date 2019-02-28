@@ -37,9 +37,6 @@ loginForm: FormGroup;
   }
 
   entrar(){
-
-  	//let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
-
     this.afAuth.auth.signInWithEmailAndPassword(this.email.value,this.password.value)
 
     .then(data => {
@@ -58,52 +55,20 @@ loginForm: FormGroup;
         this.presentAlert('Erro', 'Senha incorreta, digite novamente.')
         this.loginForm.controls['password'].setValue(null);
       }
-      /*
-       if(error.code == 'auth/invalid-email')
-      {
-        toast.setMessage('Email inválido!');
+    
+       if(error.code == 'auth/invalid-email'){
+        this.presentAlert('Erro', 'Email inválido!');
       }
 
-       else if(error.code == 'auth/user-disabled')
-      {
-        toast.setMessage('Usuário desabilitado');
+       else if(error.code == 'auth/user-disabled'){
+        this.presentAlert('Erro', 'Usuário desabilitado');
       }
 
-      else if(error.code == 'auth/user-not-found')
-      {
-        toast.setMessage('Usuário não encontrado');
+      else if(error.code == 'auth/user-not-found'){
+        this.presentAlert('Erro', 'Usuário não encontrado');
       }
-
-      else if(error.code == 'auth/wrong-password')
-      {
-        toast.setMessage('Senha incorreta');
-      }
-
-      
-      toast.present(); */
-
     });
   }
-
-/*
-  submitLogin(){
-    this.afAuth.auth.signInWithEmailAndPassword(
-      this.loginForm.value.email, this.loginForm.value.password)
-    .then(() => {
-      //console.log('Data do login: ');
-      this.users.email = this.email.value
-      this.users.senha = this.password.value
-      this.presentAlert('Usuário autenticado','');
-      this.navCtrl.setRoot('start-page');
-    })
-    .catch((error) => {
-      if(error.code == 'auth/wrong-password'){
-        this.presentAlert('Erro', 'Senha incorreta, digite novamente.')
-        this.loginForm.controls['password'].setValue(null);
-      }
-    })
-  }
-*/
   presentAlert(title: string, subtitle:string) {
     let alert = this.Alertctrl.create({
       title: title,

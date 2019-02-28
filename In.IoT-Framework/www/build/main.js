@@ -22,15 +22,15 @@ webpackEmptyAsyncContext.id = 193;
 
 var map = {
 	"../pages/create-user/create-user.module": [
-		773,
+		771,
 		0
 	],
 	"../pages/login/login.module": [
-		771,
+		772,
 		2
 	],
 	"../pages/start/start.module": [
-		772,
+		773,
 		1
 	]
 };
@@ -94,7 +94,6 @@ var HomePage = /** @class */ (function () {
         });
     }
     HomePage.prototype.entrar = function () {
-        //let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
         var _this = this;
         this.afAuth.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
             .then(function (data) {
@@ -108,50 +107,17 @@ var HomePage = /** @class */ (function () {
                 _this.presentAlert('Erro', 'Senha incorreta, digite novamente.');
                 _this.loginForm.controls['password'].setValue(null);
             }
-            /*
-             if(error.code == 'auth/invalid-email')
-            {
-              toast.setMessage('Email inválido!');
+            if (error.code == 'auth/invalid-email') {
+                _this.presentAlert('Erro', 'Email inválido!');
             }
-      
-             else if(error.code == 'auth/user-disabled')
-            {
-              toast.setMessage('Usuário desabilitado');
+            else if (error.code == 'auth/user-disabled') {
+                _this.presentAlert('Erro', 'Usuário desabilitado');
             }
-      
-            else if(error.code == 'auth/user-not-found')
-            {
-              toast.setMessage('Usuário não encontrado');
+            else if (error.code == 'auth/user-not-found') {
+                _this.presentAlert('Erro', 'Usuário não encontrado');
             }
-      
-            else if(error.code == 'auth/wrong-password')
-            {
-              toast.setMessage('Senha incorreta');
-            }
-      
-            
-            toast.present(); */
         });
     };
-    /*
-      submitLogin(){
-        this.afAuth.auth.signInWithEmailAndPassword(
-          this.loginForm.value.email, this.loginForm.value.password)
-        .then(() => {
-          //console.log('Data do login: ');
-          this.users.email = this.email.value
-          this.users.senha = this.password.value
-          this.presentAlert('Usuário autenticado','');
-          this.navCtrl.setRoot('start-page');
-        })
-        .catch((error) => {
-          if(error.code == 'auth/wrong-password'){
-            this.presentAlert('Erro', 'Senha incorreta, digite novamente.')
-            this.loginForm.controls['password'].setValue(null);
-          }
-        })
-      }
-    */
     HomePage.prototype.presentAlert = function (title, subtitle) {
         var alert = this.Alertctrl.create({
             title: title,
@@ -170,15 +136,12 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "password", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/flaviobergamini/Meus projetos/Framework---Interface-IC-Inatel/In.IoT-Framework/src/pages/home/home.html"*/'<ion-header>\n\n</ion-header>\n\n<ion-content padding>\n\n  <img class = "logo" src = "assets/images/logo-in-iot.png" />\n  \n  <h2 style= "text-align: center;"> Entrar </h2>\n  \n  <ion-item>\n  	<ion-label > <ion-icon ios="ios-person" md="md-person"></ion-icon> Email: </ion-label>\n  	<ion-input type="text" #usuario> </ion-input>\n  </ion-item>\n    <ion-item>\n  	<ion-label > <ion-icon ios="ios-lock" md="md-lock"></ion-icon> Senha: </ion-label>\n  	<ion-input type="password" #senha> </ion-input>\n  </ion-item>\n\n  <button ion-button block class = "botao" (click)= "entrar()" round>Login</button>\n  <button ion-button block class = "botao" [navPush]="\'create-user\'">Cadastrar</button>\n  <!--<button ion-button block class = "botao" [navPush]="\'login\'">Login</button>\n  <button ion-button block class = "botao" [navPush]="\'create-user\'">Cadastrar</button>   -->\n\n</ion-content>\n\n<!--Foi removido o Header deixando a primeira tela limpa somente com o background e o login ---\n<ion-content padding class="insere-image"> \n  <h1 class="custom-title">StopFarma</h1>    -------\n  <h1 class="custom-title">In.IoT Framework</h1>\n  <div class="container-buttons">\n    <button ion-button [navPush]="\'login\'">Entrar</button>\n    <button ion-button [navPush]="\'create-user\'">Registrar</button> \n  </div>               \n</ion-content>\n-->'/*ion-inline-end:"/home/flaviobergamini/Meus projetos/Framework---Interface-IC-Inatel/In.IoT-Framework/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/flaviobergamini/Meus projetos/Interface-Framework/Framework---Interface-IC-Inatel/In.IoT-Framework/src/pages/home/home.html"*/'<ion-header>\n\n</ion-header>\n\n<ion-content padding>\n\n  <img class = "logo" src = "assets/images/logo-in-iot.png" />\n  \n  <h2 style= "text-align: center;"> Entrar </h2>\n  \n  <ion-item>\n  	<ion-label > <ion-icon ios="ios-person" md="md-person"></ion-icon> Email: </ion-label>\n  	<ion-input type="text" #usuario> </ion-input>\n  </ion-item>\n    <ion-item>\n  	<ion-label > <ion-icon ios="ios-lock" md="md-lock"></ion-icon> Senha: </ion-label>\n  	<ion-input type="password" #senha> </ion-input>\n  </ion-item>\n\n  <button ion-button block class = "botao" (click)= "entrar()" round>Login</button>\n  <button ion-button block class = "botao" [navPush]="\'create-user\'">Cadastrar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/flaviobergamini/Meus projetos/Interface-Framework/Framework---Interface-IC-Inatel/In.IoT-Framework/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -244,9 +207,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__angular_fire__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_8__environments_environment__["a" /* environment */].firebase),
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/create-user/create-user.module#CreateUserPageModule', name: 'create-user', segment: 'create-user', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'login', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/start/start.module#StartPageModule', name: 'start-page', segment: 'start', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/create-user/create-user.module#CreateUserPageModule', name: 'create-user', segment: 'create-user', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/start/start.module#StartPageModule', name: 'start-page', segment: 'start', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
@@ -305,7 +268,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/flaviobergamini/Meus projetos/Framework---Interface-IC-Inatel/In.IoT-Framework/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/flaviobergamini/Meus projetos/Framework---Interface-IC-Inatel/In.IoT-Framework/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/flaviobergamini/Meus projetos/Interface-Framework/Framework---Interface-IC-Inatel/In.IoT-Framework/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/flaviobergamini/Meus projetos/Interface-Framework/Framework---Interface-IC-Inatel/In.IoT-Framework/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

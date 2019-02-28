@@ -25718,20 +25718,6 @@ page-home .ion-item {
   font-size: 0.9em;
 }
 
-/*
-page-home {
-    .insere-image{
-        background-image: url(../assets/images/logo-in-iot.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-    }
-    
-    .custom-title {
-        padding-top: 5em;
-        padding-bottom: 10em
-    }
-}*/
 page-login .custom-title {
   padding-top: 5em;
 }
